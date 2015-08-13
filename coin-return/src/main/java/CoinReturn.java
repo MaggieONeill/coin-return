@@ -48,4 +48,20 @@ public class CoinReturn{
 
     return coinReturn;
   }
+
+  public static boolean validateInput (String userInput) {
+     //validateInput is the method, String is the data type (bc everything a user enters will be a string) userInput is the name)
+     Integer input = 0;
+     try { //specific attribute of this method, going to try and parse the
+          // input into an integer, if it's not an integer it will throw an exception.
+
+        input = Integer.parseInt(userInput);
+        if(input < 0){
+          return false;
+                  }
+
+     }
+
+
+  }
 }
