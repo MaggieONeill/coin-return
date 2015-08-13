@@ -18,23 +18,29 @@ public class CoinReturn{
     // this is where we'll put the templates
   }
 
-  public static HashMap<String, Double> returnChange (Double change){
+  public static HashMap<String, Integer> returnChange (Integer change){
+    Integer quarter = 0;
+    Integer dime = 0;
+    Integer nickel = 0;
+    Integer penny = 0;
 
 
+    while(change > 25) {
+      change = change - 25;
+      quarter++;
+    }
+    while(change > 10) {
+      change = change - 10;
+      dime++;
+    }
+    while(change > 5) {
+      change = change - 5;
+      nickel++;
+    }
+    penny = change;
 
-    Double quarter =  Math.floor(change / 25);
-    Double remainder = change % 25;
 
-    Double dime = Math.floor(remainder / 10);
-    remainder = remainder % 10;
-
-    Double nickel = Math.floor(remainder / 5);
-    remainder = remainder % 5;
-
-    Double penny = remainder;
-
-    HashMap<String, Double> coinReturn = new HashMap<String, Double>();
-
+    HashMap<String, Integer> coinReturn = new HashMap<String, Integer>();
     coinReturn.put("quarter", quarter);
     coinReturn.put("dime", dime);
     coinReturn.put("nickel", nickel);
