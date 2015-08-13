@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 import spark.ModelAndView;
 
-import spark.template.velocity.VelocityTemplateEngine;
+//import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
 
 
@@ -18,14 +18,28 @@ public class CoinReturn{
     // this is where we'll put the templates
   }
 
-  public static HashMap<String, Integer> returnChange (double change){
-    Integer inputChange = change * 100;
-    Integer quarter = Math.floor(inputChange/25);
-    Integer remainder = inputChange % 25;
+  public static HashMap<String, Double> returnChange (Double change){
 
-    Integer dime = Math.floor(remainder%10);
 
-    Integer dime = Math.floor(inputChange/10);
-    Integer nickel = Math.floor()
+
+    Double quarter =  Math.floor(change / 25);
+    Double remainder = change % 25;
+
+    Double dime = Math.floor(remainder / 10);
+    remainder = remainder % 10;
+
+    Double nickel = Math.floor(remainder / 5);
+    remainder = remainder % 5;
+
+    Double penny = remainder;
+
+    HashMap<String, Double> coinReturn = new HashMap<String, Double>();
+
+    coinReturn.put("quarter", quarter);
+    coinReturn.put("dime", dime);
+    coinReturn.put("nickel", nickel);
+    coinReturn.put("penny", penny);
+
+    return coinReturn;
   }
 }
