@@ -58,10 +58,10 @@ public class CoinReturn{
         input = Integer.parseInt(userInput);
         if(input < 0){
           return false;
-                  }
-
+        }
+     } catch (NumberFormatException e) {
+        return false;
      }
-
-
+     return true;
   }
 }
