@@ -8,3 +8,13 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import java.lang.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
+public class CoinReturnTest {
+
+  @Test
+  public void returnChange_CheckThatReturnsCorrectChange_true() {
+    CoinReturn newReturn = new CoinReturn();
+    Integer numOne = 3;
+    assertEquals(numOne , newReturn.returnChange(90).get("quarter"));
+  }
+}
