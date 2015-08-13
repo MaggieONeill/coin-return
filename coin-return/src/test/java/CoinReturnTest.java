@@ -18,6 +18,14 @@ public class CoinReturnTest {
     assertEquals(numThree , newReturn.returnChange(90).get("quarter"));
     //return change is calling the method, 90 is the input
   }
+
+  @Test
+  public void returnChange_CheckThatReturnsCorrectPennies_true(){
+    CoinReturn newReturn = new CoinReturn();
+    Integer numOne = 1;
+    assertEquals(numOne , newReturn.returnChange(26).get("penny"));
+  }
+
   @Test
   public void validateInput_MakeSureInputIsAnInt_true() {
     CoinReturn newReturn = new CoinReturn();
