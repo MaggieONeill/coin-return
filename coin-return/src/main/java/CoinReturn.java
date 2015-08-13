@@ -29,7 +29,33 @@ public class CoinReturn{
 
     get("/detector", (request, response) -> {
       Map<String,Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/results.vtl");
+      model.put("template", "templates/detector.vtl");
+
+      String userInput = request.queryParams("coin_input");
+      // looks for whatever the input will be on home page form. So "" around
+      //coinInput since the user always enters a string.
+
+      HashMap<String, Integer> moneyMap = new HashMap<String, Integer>();
+
+      Integer quarters = 0;
+      Integer dimes = 0;
+      Integer nickels = 0;
+      Integer pennies = 0;
+
+      if(validateInput(userInput) == true ) {
+        Integer input = Integer.parseInt(userInput);
+        moneyMap = returnChange(input);
+
+        quarters = moneyMap.get("quarter");
+        dimes = moneyMap.get("dime");
+        nickels = moneyMap.get("nickel");
+        pennies = moneyMap.get("penny");
+      }
+
+      model.put("quarters", quarters);
+      model.put("dimes", dimes);
+      model.put("nickels", nickels);
+      model.put("pennies", pennies);
 
       return new ModelAndView(model, layout );
     }, new VelocityTemplateEngine());
